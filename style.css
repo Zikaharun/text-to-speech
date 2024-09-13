@@ -1,0 +1,241 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #58e9a5;
+  padding: 20px;
+}
+
+h1,
+p {
+  font-family:  Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  
+}
+
+.sub-p {
+  font-size: small;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main {
+  width: 50%;
+  max-width: 800px; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: solid 3px #000000;
+  border-radius: 8px;
+  background-color: #f4eee5;
+  box-shadow: 5px 5px 3px 5px #000000;
+  margin: 0 auto;
+}
+
+.h1 {
+  border: solid 3px #ffff;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: #ffff;
+  box-shadow: 3px 6px  #ffff;
+  text-shadow: 2px 2px #000000;
+}
+
+.h1:hover {
+  box-shadow: 1px 1px  #ffff;
+  margin-top: 20px;
+}
+
+
+.txt,
+select,
+form > div {
+  display: block;
+  margin: 0 auto;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.form {
+  margin: 15px;
+}
+
+.txt {
+  width: 80%;
+  padding: 1.25rem;
+}
+
+
+
+select {
+  width: 83%;
+  border:3px solid #000000;
+  border-radius: 5px;
+  padding: 0.75rem;
+}
+
+form > div {
+  width: 81%;
+}
+
+.txt,
+form > div {
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.clearfix {
+  clear: both;
+}
+
+label {
+  float: left;
+  width: 10%;
+  line-height: 1.5;
+}
+
+.rate-value,
+.pitch-value {
+  float: right;
+  width: 5%;
+  line-height: 1.5;
+}
+
+#rate,
+#pitch {
+  float: right;
+  width: 81%;
+
+
+}
+
+input {
+  border:3px solid #000000;
+  border-radius: 5px;
+}
+.controls {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.download-link {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Styling umum untuk elemen <a> */
+a {
+  color: #3498db; /* Warna teks */
+  text-decoration: none; /* Hapus garis bawah */
+  font-weight: bold; /* Bold */
+  padding: 10px 15px; /* Padding di sekitar teks */
+  border-radius: 5px; /* Radius border */
+  transition: background-color 0.3s;
+  margin-bottom: 10px; /* Transisi halus saat hover */
+}
+
+/* Styling untuk elemen <a> dengan kelas download-link */
+a.download-link {
+  display: inline-block;
+  background-color: #3498db; /* Warna latar belakang */
+  color: #fff; /* Warna teks */
+  text-align: center; /* Teks di tengah */
+  font-size: 16px; /* Ukuran font */
+}
+
+a.download-link:hover {
+  background-color: #2980b9; /* Warna latar belakang saat hover */
+}
+
+.controls {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 10px;
+}
+
+
+.controls button {
+  padding: 10px;
+  background-color: #FFFF00;
+  border: solid 3px #000000;
+  border-radius: 3px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  box-shadow: 3px 3px 6px  #000000;
+}
+
+.controls button:hover {
+  background-color: #8f8f0f;
+  box-shadow: 1px 3px 1px  #000000;
+}
+
+/* Styling untuk kontainer download link */
+.download-link-container {
+  position: relative;
+}
+
+/* Styling untuk tombol tutup */
+.close-button {
+  position: absolute; /* Memungkinkan penempatan di sudut kanan atas */
+  top: 5px; /* Jarak dari atas */
+  right: 5px; /* Jarak dari kanan */
+  background: #ff0000; /* Warna latar belakang */
+  color: #ffffff; /* Warna teks */
+  border: none; /* Menghapus border default */
+  border-radius: 50%; /* Bentuk lingkaran */
+  width: 25px; /* Lebar tombol */
+  height: 25px; /* Tinggi tombol */
+  display: flex; /* Mengatur layout flex */
+  align-items: center; /* Menyelaraskan item secara vertikal */
+  justify-content: center; /* Menyelaraskan item secara horizontal */
+  cursor: pointer; /* Menambahkan kursor pointer */
+}
+
+.close-button:hover {
+  background: #cc0000; /* Warna latar belakang saat hover */
+}
+
+
+/* responsive */
+
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .main {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .h1 {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 1.5em;
+  }
+
+}
+
