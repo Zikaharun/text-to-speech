@@ -10,9 +10,9 @@ const rate = document.querySelector("#rate");
 const rateValue = document.querySelector(".rate-value");
 
 let voices = [];
-let audioChunks = []; // Untuk menyimpan potongan audio
+let audioChunks = []; // to store chunks audio
 
-// Inisialisasi AudioContext dan MediaStreamDestination untuk merekam
+// Inisialisation AudioContext & MediaStreamDestination to record
 const audioContext = new AudioContext();
 const destination = audioContext.createMediaStreamDestination();
 const mediaRecorder = new MediaRecorder(destination.stream);
@@ -67,7 +67,7 @@ function speak() {
 
     utterThis.onend = function (event) {
       console.log("SpeechSynthesisUtterance.onend");
-      mediaRecorder.stop(); // Berhenti merekam saat selesai bicara
+      mediaRecorder.stop(); // Stop record while don't speak
     };
 
     utterThis.onerror = function (event) {
@@ -87,22 +87,22 @@ function speak() {
     utterThis.pitch = pitch.value;
     utterThis.rate = rate.value;
 
-    // Hubungkan audio dari SpeechSynthesis ke AudioContext
+    // connect audio from SpeechSynthesis to AudioContext
     const audioElement = new Audio();
     audioElement.srcObject = destination.stream;
     const source = audioContext.createMediaElementSource(audioElement);
     source.connect(destination);
     source.connect(audioContext.destination);
 
-    // Mulai merekam saat mulai bicara
+    // Start recording while speak
     mediaRecorder.start();
 
-    // Mulai bicara
+    // starting speak
     synth.speak(utterThis);
   }
 }
 
-// Event handler saat merekam
+// Event handler recording
 mediaRecorder.ondataavailable = function (event) {
   audioChunks.push(event.data);
 };
@@ -111,41 +111,41 @@ mediaRecorder.onstop = function () {
   const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
   const audioURL = URL.createObjectURL(audioBlob);
 
-  // Menampilkan audio hasil rekaman
+  // display audi recording
   const audio = new Audio(audioURL);
   audio.play();
 
-  // Membuat tombol tutup
+  // Close button
 const closeButton = document.createElement('button');
 closeButton.textContent = 'X'; // Teks tombol tutup
 closeButton.classList.add('close-button');
 
-// Menambahkan event listener ke tombol tutup
+// add eventListener to close button
 closeButton.addEventListener('click', (event) => {
-  event.stopPropagation(); // Mencegah klik tombol tutup memicu klik pada link
-  event.preventDefault(); // Mencegah aksi default tombol jika ada
+  event.stopPropagation(); // preven close button click
+  event.preventDefault(); // preven default action button if there.
   if (downloadLinkContainer.parentElement) {
-    downloadLinkContainer.remove(); // Menghapus seluruh kontainer
+    downloadLinkContainer.remove(); // remove all the container
   }
 });
 
-// Membuat elemen <a>
+// create element <a>
 const downloadLink = document.createElement('a');
 downloadLink.href = audioURL;
 downloadLink.download = 'speech_recording.wav';
 downloadLink.classList.add('download-link');
 downloadLink.textContent = 'Download Recording';
 
-// Membungkus link download dan tombol tutup dengan kontainer
+// wrap link download & close button with container
 const downloadLinkContainer = document.createElement('div');
 downloadLinkContainer.classList.add('download-link-container');
-downloadLinkContainer.appendChild(downloadLink); // Menambahkan link download ke kontainer
-downloadLinkContainer.appendChild(closeButton); // Menambahkan tombol tutup ke kontainer
+downloadLinkContainer.appendChild(downloadLink); // add link download to container
+downloadLinkContainer.appendChild(closeButton); // add close button to container
 
-// Temukan kontainer dengan kelas 'controls'
+// find container with controls class
 const controlsContainer = document.querySelector('.controls');
 
-// Tambahkan kontainer yang berisi link download dan tombol tutup ke dalam kontainer 'controls'
+// add container
 if (controlsContainer) {
   controlsContainer.appendChild(downloadLinkContainer);
 }
